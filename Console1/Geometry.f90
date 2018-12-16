@@ -4,7 +4,7 @@
 !计算网格的面积
 !---------------------------------------------------------------------------
     use Define_Variables
-    implicit double precision(a-h,o-z)
+    implicit double precision(A_Matrix-h,o-z)
 
     areatotal=0.d0
     

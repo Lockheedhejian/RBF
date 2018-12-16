@@ -20,11 +20,11 @@ subroutine RBF
     enddo
     enddo
 
-   NBC_3=nbc+3
+   NBC3=nbc+3
    Radius=1.0
     
-    allocate (C_Matrix(nbc3,nbc3),A_Matrix(nbc3,nbc3))
-	allocate (B_Matrix(nbc3),x(nbc3))
+    allocate (C_Matrix(NBC3,NBC3),A_Matrix(NBC3,NBC3))
+	allocate (B_Matrix(NBC3),x(NBC3))
    
    
     do i=1,nbc
@@ -46,32 +46,54 @@ subroutine RBF
                         kpoint_RBF(k-1,3)=kpoint_RBF(k,3)
                     enddo   
                 nbc=nbc-1
-            else               
-                tmp=ss**3
-				!tmp=ss**2*log10(ss)
+            else     
+                call 
+                Radial_Basis_Function(1)
+				!
                 !径向基函数的两种不同的形式
             endif
             c(i,j)=tmp
         enddo
-        C_Matrix(i,nbc3-2)=1.0
-        C_Matrix(i,nbc3-1)=x1
-        C_Matrix(i,nbc3)=y1
-    enddo
-    
-    do i=nbc3-2,nbc3
-    do j=i,nbc3
-        C_Matrix(i,j)=0.0
-    enddo
+        C_Matrix(i,NBC3-2)=1.0
+        C_Matrix(i,NBC3-1)=x1
+        C_Matrix(i,NBC3)=y1
     enddo
 
-    do i=1,nbc3
-    do j=i,nbc3
+    do i=1,NBC3
+    do j=i,NBC3
+        if(i.gt.nbc)then
+            C_Matrix(i,j)=0.0
+        end if
         C_Matrix(j,i)=C_Matrix(i,j)
     enddo
     enddo
     
     end
     
+    subroutine Radial_Basis_Function(Func_Num)
+    
+    use Define_Variables
+    character*40 Func_Number
+    
+    Func:select case(Func_Number)
+    case('1')!Spline_type
+        tmp=ss**3
+    case('2')!Thin plate Spline
+        tmp=ss**2*log10(ss)
+    case('3')!Quadirc Biharmonic
+        tmp=1+ss**2
+    case('4')!Inverse Quadric
+        tmp=1/(1+ss**2)
+    case('5')!Gaussian
+        tmp=exp**(-1*(ss**2))
+    end select Func
+    
+
+        
+        
+        
+        
+        
     
 
 

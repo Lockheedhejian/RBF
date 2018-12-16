@@ -1,6 +1,6 @@
 subroutine Count_Max
         use Define_Variables
-        implicit double precision(a-h,o-z)
+        implicit double precision(A_Matrix-h,o-z)
         
         call cpu_time(time_begin)
         

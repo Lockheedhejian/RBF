@@ -2,7 +2,7 @@ subroutine TFI_Parameter
 !---------------------------------------------------------------------------
 !该子程序用来计算每个网格边的长度，以及TFI方法中的alpha和beta
     use Define_Variables
-    implicit double precision(a-h,o-z)
+    implicit double precision(A_Matrix-h,o-z)
 
     do ii=1,Num_Block
     do k=1,num(ii,3)
