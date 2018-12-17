@@ -48,7 +48,7 @@ subroutine RBF
                     enddo   
                 nbc=nbc-1
             else     
-                call Radial_Basis_Function(1)
+                call Radial_Basis_Function(4)
 				!
                 !径向基函数的两种不同的形式
             endif

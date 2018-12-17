@@ -59,5 +59,4 @@
        
        
        !输出程序运行的时间
-write(*,*)"I want to change world"
     end
