@@ -1,7 +1,7 @@
 subroutine Read_Boundary_Condition
     
     use Define_Variables
-    implicit double precision(A_Matrix-h,o-z)
+    implicit double precision(a-h,o-z)
     
     character::temp*30
 

@@ -1,6 +1,7 @@
 subroutine RBF
     use Define_Variables
-    
+    allocatable::C_Matrix(:,:),A_Matrix(:,:)
+	allocatable:: B_Matrix(:),x(:)
     
      nbc=0
 
@@ -47,12 +48,11 @@ subroutine RBF
                     enddo   
                 nbc=nbc-1
             else     
-                call 
-                Radial_Basis_Function(1)
+                call Radial_Basis_Function(1)
 				!
                 !径向基函数的两种不同的形式
             endif
-            c(i,j)=tmp
+            C_Matrix(i,j)=tmp
         enddo
         C_Matrix(i,NBC3-2)=1.0
         C_Matrix(i,NBC3-1)=x1
@@ -73,20 +73,21 @@ subroutine RBF
     subroutine Radial_Basis_Function(Func_Num)
     
     use Define_Variables
-    character*40 Func_Number
+    integer:: Func_Num
     
-    Func:select case(Func_Number)
-    case('1')!Spline_type
+    Func:select case(Func_Num)
+    case(1)!Spline_type
         tmp=ss**3
-    case('2')!Thin plate Spline
+    case(2)!Thin plate Spline
         tmp=ss**2*log10(ss)
-    case('3')!Quadirc Biharmonic
+    case(3)!Quadirc Biharmonic
         tmp=1+ss**2
-    case('4')!Inverse Quadric
+    case(4)!Inverse Quadric
         tmp=1/(1+ss**2)
-    case('5')!Gaussian
+    case(5)!Gaussian
         tmp=exp**(-1*(ss**2))
     end select Func
+    end
     
 
         

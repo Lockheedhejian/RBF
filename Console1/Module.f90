@@ -1,6 +1,6 @@
     module Define_Variables
     !用来存储主程序和子程序中用到的变量以及数组
-        implicit double precision(A_Matrix-h,o-z)   
+        implicit double precision(a-h,o-z)   
         !-------------------------------------------------------------------------------
         real::time_begin,time_end!用来计算程序运行时间的变量
         !-------------------------------------------------------------------------------

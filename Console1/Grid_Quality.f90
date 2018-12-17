@@ -2,7 +2,7 @@ subroutine Grid_Quality
     
 
     use Define_Variables
-    implicit double precision(A_Matrix-h,o-z)
+    implicit double precision(a-h,o-z)
     call cpu_time(time_begin)
     
 !---------------------------------------------------------------

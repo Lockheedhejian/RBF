@@ -1,6 +1,6 @@
 subroutine Cal_WallNumber
         use Define_Variables
-        implicit double precision(A_Matrix-h,o-z)
+        implicit double precision(a-h,o-z)
         character::temp*30
         
         
